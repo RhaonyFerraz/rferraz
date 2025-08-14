@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Modern Portfolio Theme - Deep Blues & Vibrant Accents */
+    --background: 220 25% 6%;
+    --foreground: 210 40% 95%;
+
+    --card: 220 22% 8%;
+    --card-foreground: 210 40% 95%;
+
+    --popover: 220 22% 8%;
+    --popover-foreground: 210 40% 95%;
+
+    --primary: 217 91% 65%;
+    --primary-foreground: 220 25% 6%;
+    --primary-glow: 217 91% 80%;
+
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 210 40% 95%;
+
+    --muted: 220 15% 12%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 270 95% 75%;
+    --accent-foreground: 220 25% 6%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 15%;
+    --ring: 217 91% 65%;
+
+    /* Design System Tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 65%), hsl(270 95% 75%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 25% 6%) 0%, hsl(220 22% 12%) 50%, hsl(217 91% 15%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(220 22% 8%), hsl(220 15% 12%));
+    --gradient-social: linear-gradient(45deg, hsl(217 91% 65%), hsl(270 95% 75%));
+    
+    --shadow-glow: 0 0 50px hsl(217 91% 65% / 0.3);
+    --shadow-card: 0 10px 40px hsl(220 25% 3% / 0.5);
+    --shadow-social: 0 5px 20px hsl(217 91% 65% / 0.4);
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .light {
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --primary: 217 91% 55%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 270 95% 65%;
+    --accent-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 217 91% 55%;
+    
+    --gradient-hero: linear-gradient(135deg, hsl(210 40% 98%) 0%, hsl(210 40% 95%) 50%, hsl(217 91% 95%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 40% 96%));
+    --shadow-glow: 0 0 50px hsl(217 91% 55% / 0.2);
+    --shadow-card: 0 10px 40px hsl(217 91% 55% / 0.1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    background: var(--gradient-hero);
+    min-height: 100vh;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .hero-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+  
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-lg border border-border/20;
+    box-shadow: var(--shadow-card);
+  }
+  
+  .social-button {
+    @apply relative overflow-hidden rounded-full p-4 transition-all duration-300;
+    background: var(--gradient-social);
+    box-shadow: var(--shadow-social);
+  }
+  
+  .social-button:hover {
+    @apply scale-110;
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .nav-link {
+    @apply relative px-6 py-3 rounded-full font-medium transition-all duration-300;
+    @apply hover:bg-primary/20 hover:text-primary;
+  }
+  
+  .nav-link::after {
+    @apply absolute bottom-0 left-1/2 w-0 h-0.5 bg-primary transition-all duration-300;
+    content: '';
+    transform: translateX(-50%);
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+}
